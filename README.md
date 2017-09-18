@@ -26,10 +26,10 @@ Once the project moves into development, the press release can be used as a touc
   > Facing a tough challenge? Have a case of the Mondays? Instead of spending all your free time combing the internet for a singe nugget of wisdom to get you through the day, find positivity here with a single click, so you can quickly get back to living your best life.
 
 ## Problem ##
-  > The internet is huge and full of errors. Inspiration can be buried deep in the tangled interwebs and searching for the right nugget of wisdom for your situation can lead to aimlessly wandering through the interet for all eternity. 
+  > The internet is huge and full of errors. Inspiration can be buried deep in the tangled interwebs and searching for the right nugget of wisdom for your situation can lead to aimlessly wandering through the internet for all eternity. 
 
 ## Solution ##
-  > Imagine a verdant garden of inspiration, conveniently mapped and indexed for your personalized motivational needs. Motivator provides categorized tokens of inspiration, motivation and even humor, so that you can easily locate the spoken wisdom of wise and clever individuals that have come before you and left their flowery literay legacy.
+  > Imagine a verdant garden of inspiration, conveniently mapped and indexed for your personalized motivational needs. Motivator provides categorized tokens of inspiration, motivation and even humor, so that you can easily locate the spoken wisdom of wise and clever individuals that have left their flowery literay legacy behind.
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
