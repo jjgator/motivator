@@ -2,35 +2,39 @@ import React from 'react';
 import {render} from 'react-dom';
 import axios from 'axios';
 import API_KEY from '../../../config.js';
+import Quote from './Quote.jsx';
+import * as QuotesModel from '../models/quotes.js';
 
 class App extends React.Component {
 	constructor() {
     super();
     this.state = {
-      quote: null
+      quotes: []
     };
    }
 
   componentDidMount() {
-    axios({
-    	method:'get',
-  		url:'http://quotes.rest/quote/random.json',
-  		params: {
-  			api_key: API_KEY
-  		}
-    }).then((response) => {
-    	this.setState({quote: response.data.contents.quote})
+  	QuotesModel.getQuote().then((response) => {
+  		let responseArray = [];
+  		responseArray.push(response.data.contents);
+    	this.setState({quotes: responseArray});
     });
   }
 
   render () {
     return (
       <div>
-      	<p>{this.state.quote}</p>	
-      	<form>
-	        <label>Motivate Yo-Self!</label><input id="input"/>
-	        <button type='submit'>Submit</button>
-        </form>
+      	<h3>Random Inspiration: </h3>
+		  	<div>
+		  		{this.state.quotes.map((quote, i) => 
+		  			<Quote quoteObj={quote} key={i} />	
+					)}
+		  	</div>
+		  	<form>
+
+		      <label>Motivate Yo-Self!</label><input id="input"/>
+		      <button type='submit'>Submit</button>
+		    </form>
       </div>
     );
   }
