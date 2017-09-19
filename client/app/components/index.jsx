@@ -26,8 +26,11 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <p> Motivate Yo-Self! </p>
-        <p>{this.state.quote}</p>
+      	<p>{this.state.quote}</p>	
+      	<form>
+	        <label>Motivate Yo-Self!</label><input id="input"/>
+	        <button type='submit'>Submit</button>
+        </form>
       </div>
     );
   }
