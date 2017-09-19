@@ -2,8 +2,9 @@ import React from 'react';
 
 const Quote = (props) => (
   <div className="quote">
-    <p>{props.quoteObj.quote}</p>
-    <p>- {props.quoteObj.author}</p>
+  	<h3 id='float'>Inspiration:</h3>
+    <p id='float' className='quoteText'>{props.quoteObj.quote}</p>
+    <p id='float' className='author'>- {props.quoteObj.author}</p>
   </div>
 );
 

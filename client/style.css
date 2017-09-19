@@ -1,0 +1,39 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url("./beachrise.jpg");
+}
+
+p.author {
+  font-style: italic;
+  text-align: right;
+}
+
+button {
+  background-color: azure;
+  margin: 8px;
+  border-radius: 5px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.banner {
+	padding: 20px;
+  background-color: lightgrey;
+}
+.categories {
+	padding: 20px;
+}
+
+.form {
+	padding: 20px;
+	background-color: #F0F8FF;
+	border-radius: 7px;
+}
+
+#input {
+	padding: 30px;
+	width: 190px; 
+	height: 25px; 
+	border: 1px solid #999999; 
+	padding: 5px;
+}

@@ -7,13 +7,16 @@ class App extends React.Component {
 	constructor() {
     super();
     this.state = {
-      quotes: []
+      quotes: [],
+      toggle: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
    }
 
   componentDidMount() {
-  	QuotesModel.getQuote(null).then((response) => {
+  	let url = 'http://quotes.rest/quote/random.json';
+  	QuotesModel.getQuote(url, null).then((response) => {
   		let responseArray = [];
   		responseArray.push(response.data.contents);
     	this.setState({quotes: responseArray});
@@ -22,10 +25,20 @@ class App extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    let input = event.target.value;
-    console.log(input);
-    QuotesModel.getQuote(input).then((response) => {
-    	console.log(input);
+    let input = event.target.input.value;
+    let url = 'http://quotes.rest/quote/search.json';
+    QuotesModel.getQuote(url, input).then((response) => {
+  		let responseArray = [];
+  		responseArray.push(response.data.contents);
+    	this.setState({quotes: responseArray});
+    });
+  }
+
+  handleClick(event) {
+    event.preventDefault();
+    let input = event.target.id;
+    let url = 'http://quotes.rest/quote/search.json';
+    QuotesModel.getQuote(url, input).then((response) => {
   		let responseArray = [];
   		responseArray.push(response.data.contents);
     	this.setState({quotes: responseArray});
@@ -36,28 +49,25 @@ class App extends React.Component {
     return (
       <div>
       	<div className='banner'>
-	      	<row>
-		      	<h3>Random Inspiration: </h3>
-				  	<div>
-				  		{this.state.quotes.map((quote, i) => 
-				  			<Quote quoteObj={quote} key={i} />	
-							)}
-				  	</div>
-				  </row>
+			  	<div className='randomQuote'>
+			  		{this.state.quotes.map((quote, i) => 
+			  			<Quote quoteObj={quote} key={i} />	
+						)}
+			  	</div>
 			  </div>
-		  	<div>
-		  		<h4>Top Categories: </h4>
+		  	<div className='categories'>
+		  		<h3>Top Categories: </h3>
 		  		<row>
-		  			<button type='button' id='courage'>Courage</button>
-		  			<button type='button' id='love'>Love</button>
-		  			<button type='button' id='peace'>Peace</button>
-		  			<button type='button' id='humor'>Humor</button>
-		  			<button type='button' id='success'>Success</button>
+		  			<button type='button' id='courage' onClick={this.handleClick}>Courage</button>
+		  			<button type='button' id='love' onClick={this.handleClick}>Love</button>
+		  			<button type='button' id='peace' onClick={this.handleClick}>Peace</button>
+		  			<button type='button' id='humor' onClick={this.handleClick}>Humor</button>
+		  			<button type='button' id='success' onClick={this.handleClick}>Success</button>
 		  		</row>
 		  	</div>
-		  	<form>
+		  	<form className='form' onSubmit={this.handleSubmit}>
 		      <label>Motivate Yo-Self!  </label><input id="input"/>
-		      <button type='submit' onClick={this.handleSubmit}>Submit</button>
+		      <button type='submit' >Submit</button>
 		    </form>
       </div>
     );
