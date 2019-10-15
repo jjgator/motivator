@@ -3,7 +3,9 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+//var dbconfig = require('./db/dbconfig.js');
+var db = require('./sql-db/config.js');
+//var Quote = require('./db/models/quote.js');
 
 var app = express();
 
@@ -14,6 +16,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, './client')));
 
+// app.post('/quotes', (req, res) => {
+// 	new Quote ({
+// 		text: req.body.text,
+// 		author: req.body.author
+// 	})
+// 	.save()
+// 	.then(newQuote => {
+// 		res.send(newQuote);
+// 	});
+// });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -30,7 +42,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.send('error');
 });
 
 module.exports = app;

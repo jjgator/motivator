@@ -27,9 +27,15 @@ class App extends React.Component {
     event.preventDefault();
     let input = event.target.input.value;
     let url = 'http://quotes.rest/quote/search.json';
+
     QuotesModel.getQuote(url, input).then((response) => {
   		let responseArray = [];
   		responseArray.push(response.data.contents);
+  		QuotesModel.saveQuote('http://localhost:3000/quotes', {
+  			text: response.data.contents.quote,
+  			author: response.data.contents.author
+  		});
+
     	this.setState({quotes: responseArray});
     });
   }
@@ -38,9 +44,15 @@ class App extends React.Component {
     event.preventDefault();
     let input = event.target.id;
     let url = 'http://quotes.rest/quote/search.json';
+
     QuotesModel.getQuote(url, input).then((response) => {
   		let responseArray = [];
   		responseArray.push(response.data.contents);
+  		QuotesModel.saveQuote('http://localhost:3000/quotes', {
+  			text: response.data.contents.quote,
+  			author: response.data.contents.author
+  		});
+
     	this.setState({quotes: responseArray});
     });
   }

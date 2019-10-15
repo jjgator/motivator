@@ -12,3 +12,10 @@ export const getQuote = function(url, category) {
 	});
 };
 
+export const saveQuote = function(url, quote) {
+	return axios({
+		method: 'post',
+		url: url,
+		data: quote
+	});
+};
